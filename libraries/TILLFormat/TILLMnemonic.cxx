@@ -4,6 +4,10 @@
 
 // Detector dependent includes
 #include "TFipps.h"
+#include "TFippsBgo.h"
+#include "TFippsLaBr.h"
+#include "TFippsLaBrBgo.h"
+#include "TFippsTAC.h"
 
 ClassImp(TILLMnemonic)
 
@@ -18,7 +22,19 @@ void TILLMnemonic::EnumerateSystem()
    // Enumerating the fSystemString must come after the total mnemonic has been parsed as the details of other parts of
    // the mnemonic must be known
    if(fSystemString.compare("FI") == 0) {
-      fSystem = ESystem::kFipps;
+      if(SubSystem() == EMnemonic::kS) {
+         fSystem = ESystem::kFippsBgo;
+      } else {
+          fSystem = ESystem::kFipps;
+      }
+   } else if(fSystemString.compare("LB") == 0) {
+       if(SubSystem() == EMnemonic::kS ) {
+           fSystem = ESystem::kFippsLaBrBgo;
+       } else if(SubSystem() == EMnemonic::kT) {
+           fSystem = ESystem::kFippsTAC;
+       } else {
+           fSystem = ESystem::kFippsLaBr;
+       }
    } else {
       fSystem = ESystem::kClear;
    }
@@ -72,7 +88,11 @@ TClass* TILLMnemonic::GetClassType() const
 	}
 
 	switch(System()) {
-		case ESystem::kFipps: fClassType = TFipps::Class(); break;
+		case ESystem::kFipps:        fClassType = TFipps::Class(); break;
+        case ESystem::kFippsBgo:     fClassType = TFippsBgo::Class(); break;
+        case ESystem::kFippsLaBr:    fClassType = TFippsLaBr::Class(); break;
+        case ESystem::kFippsLaBrBgo: fClassType = TFippsLaBrBgo::Class(); break;
+        case ESystem::kFippsTAC:     fClassType = TFippsTAC::Class(); break;
 		default:              fClassType = nullptr;
 	};
 	return fClassType;

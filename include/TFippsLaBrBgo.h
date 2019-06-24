@@ -8,16 +8,16 @@
 #include "Globals.h"
 #include "TBgo.h"
 
-class TLaBrBgo : public TBgo {
+class TFippsLaBrBgo : public TBgo {
 public:
-   TLaBrBgo();
-   TLaBrBgo(const TLaBrBgo&);
-   virtual ~TLaBrBgo();
+   TFippsLaBrBgo();
+   TFippsLaBrBgo(const TFippsLaBrBgo&);
+   virtual ~TFippsLaBrBgo();
 
-   TLaBrBgo& operator=(const TLaBrBgo&); //!<!
+   TFippsLaBrBgo& operator=(const TFippsLaBrBgo&); //!<!
 
    /// \cond CLASSIMP
-   ClassDef(TLaBrBgo, 1) // LaBrBgo Physics structure
+   ClassDef(TFippsLaBrBgo, 1) // LaBrBgo Physics structure
    /// \endcond
 };
 /*! @} */

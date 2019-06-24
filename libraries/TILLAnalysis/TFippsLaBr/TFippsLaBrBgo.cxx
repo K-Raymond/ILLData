@@ -12,36 +12,36 @@
 
 ////////////////////////////////////////////////////////////
 //
-// TLaBrBgo
+// TFippsLaBrBgo
 //
-// The TLaBrBgo class is just a differently name TBgo.
+// The TFippsLaBrBgo class is just a differently name TBgo.
 // This allows us to distinguish between the BGOs for diiferent
 // detector classes.
 //
 ////////////////////////////////////////////////////////////
 
 /// \cond CLASSIMP
-ClassImp(TLaBrBgo)
+ClassImp(TFippsLaBrBgo)
 /// \endcond
 
-TLaBrBgo::TLaBrBgo() : TBgo()
+TFippsLaBrBgo::TFippsLaBrBgo() : TBgo()
 {
 	/// Default ctor.
    TBgo::Clear();
 }
 
-TLaBrBgo::TLaBrBgo(const TLaBrBgo& rhs) : TBgo()
+TFippsLaBrBgo::TFippsLaBrBgo(const TFippsLaBrBgo& rhs) : TBgo()
 {
 	/// Copy ctor.
    rhs.Copy(*this);
 }
 
-TLaBrBgo::~TLaBrBgo()
+TFippsLaBrBgo::~TFippsLaBrBgo()
 {
    // Default Destructor
 }
 
-TLaBrBgo& TLaBrBgo::operator=(const TLaBrBgo& rhs)
+TFippsLaBrBgo& TFippsLaBrBgo::operator=(const TFippsLaBrBgo& rhs)
 {
    rhs.Copy(*this);
    return *this;

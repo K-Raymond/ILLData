@@ -12,6 +12,11 @@
 #pragma link C++ class std::vector<TFippsHit>+;
 #pragma link C++ class std::vector<TFippsHit*>+;
 #pragma link C++ class TFipps+;
+#pragma link C++ class TFippsBgoHit+;
+#pragma link C++ class std::vector<TFippsBgoHit>+;
+#pragma link C++ class std::vector<TFippsBgoHit*>+;
+#pragma link C++ class TFippsBgo+;
+
 
 #endif
 

@@ -19,7 +19,11 @@ public:
    // These separations exist only to easily see the difference when looking at the code here.
    enum class ESystem {
       kFipps,           //0
-		kClear            //1
+      kFippsBgo,        //1
+      kFippsLaBr,       //2
+      kFippsLaBrBgo,    //3
+      kFippsTAC,        //4
+      kClear          //5
    };
 
    ESystem   System() const { return fSystem; }

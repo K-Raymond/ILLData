@@ -9,6 +9,7 @@
 
 #pragma link C++ class TFippsLaBrHit+;
 #pragma link C++ class std::vector<TFippsLaBrHit>+;
+#pragma link C++ class std::vector<TFippsLaBrHit*>+;
 #pragma link C++ class TFippsLaBr+;
 #pragma link C++ class TFippsLaBrBgoHit+;
 #pragma link C++ class TFippsLaBrBgo+;

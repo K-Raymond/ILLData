@@ -1,5 +1,5 @@
-#ifndef TLABRBGOHIT_H
-#define TLABRBGOHIT_H
+#ifndef TFIPPSLABRBGOHIT_H
+#define TFIPPSLABRBGOHIT_H
 
 /** \addtogroup Detectors
  *  @{
@@ -21,18 +21,18 @@
 
 #include "TBgoHit.h"
 
-class TLaBrBgoHit : public TBgoHit {
+class TFippsLaBrBgoHit : public TBgoHit {
 public:
-   TLaBrBgoHit();
-   TLaBrBgoHit(const TLaBrBgoHit& hit) : TBgoHit(static_cast<const TBgoHit&>(hit)) {}
-   TLaBrBgoHit(const TFragment& frag) : TBgoHit(frag) {}
-   ~TLaBrBgoHit() override;
+   TFippsLaBrBgoHit();
+   TFippsLaBrBgoHit(const TFippsLaBrBgoHit& hit) : TBgoHit(static_cast<const TBgoHit&>(hit)) {}
+   TFippsLaBrBgoHit(const TFragment& frag) : TBgoHit(frag) {}
+   ~TFippsLaBrBgoHit() override;
 
    /////////////////////////		/////////////////////////////////////
    UShort_t GetArrayNumber() const override { return (3 * (GetDetector() - 1) + GetSegment()); } //!<! the BGO of each detector has three segments
 
    /// \cond CLASSIMP
-   ClassDefOverride(TLaBrBgoHit, 1)
+   ClassDefOverride(TFippsLaBrBgoHit, 1)
    /// \endcond
 };
 /*! @} */

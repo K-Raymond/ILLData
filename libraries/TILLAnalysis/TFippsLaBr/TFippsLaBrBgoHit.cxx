@@ -5,13 +5,13 @@
 #include "GValue.h"
 
 /// \cond CLASSIMP
-ClassImp(TLaBrBgoHit)
+ClassImp(TFippsLaBrBgoHit)
 /// \endcond
 
-TLaBrBgoHit::TLaBrBgoHit()
+TFippsLaBrBgoHit::TFippsLaBrBgoHit()
 {
    Clear();
 }
 
-TLaBrBgoHit::~TLaBrBgoHit() = default;
+TFippsLaBrBgoHit::~TFippsLaBrBgoHit() = default;
 

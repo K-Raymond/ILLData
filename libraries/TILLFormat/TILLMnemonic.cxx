@@ -50,8 +50,11 @@ void TILLMnemonic::EnumerateDigitizer(TPriorityValue<std::string>& digitizerName
 		tmpType = EDigitizer::kCAEN8;
 	} else if(name.compare("CAEN") == 0) {
 		tmpType = EDigitizer::kCaen;
-	} else {
-		std::cout<<"Warning, digitizer type '"<<name<<"' not recognized, options are 'CAEN8', and 'CAEN'!"<<std::endl;
+	} else if(name.compare("V1725") == 0) {
+        tmpType = EDigitizer::V1725;
+        tmpUnit = 4;
+    } else {
+		std::cout<<"Warning, digitizer type '"<<name<<"' not recognized, options are 'CAEN8', 'CAEN', and 'V1725'!"<<std::endl;
 	}
 	digitizerType.Set(tmpType, digitizerName.Priority());
 	timeStampUnit.Set(tmpUnit, digitizerName.Priority());

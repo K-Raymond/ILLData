@@ -284,6 +284,7 @@ Int_t TFipps::GetAddbackMultiplicity()
    // if the addback has been reset, clear the addback hits
    if(!IsAddbackSet()) {
       ab_vec.clear();
+      frag_vec.clear();
    }
    if(ab_vec.empty()) {
 		CreateAddback(hit_vec, ab_vec, frag_vec);
@@ -311,6 +312,7 @@ Int_t TFipps::GetSuppressedAddbackMultiplicity(const TBgo* bgo)
    // if the addback has been reset, clear the addback hits
    if(!IsAddbackSet()) {
       ab_vec.clear();
+      frag_vec.clear();
    }
    if(ab_vec.empty()) {
 		CreateSuppressedAddback(bgo, hit_vec, ab_vec, frag_vec);

@@ -6,7 +6,7 @@
 #include "Globals.h"
 #include "TClass.h"
 
-enum class EDigitizer : char { kDefault, kCAEN8, kCaen };
+enum class EDigitizer : char { kDefault, kCAEN8, kCaen, V1725 };
 
 class TILLMnemonic : public TMnemonic {
 public:

@@ -46,13 +46,18 @@ void TILLMnemonic::EnumerateDigitizer(TPriorityValue<std::string>& digitizerName
 	std::transform(name.begin(), name.end(), name.begin(), ::toupper);
 	EDigitizer tmpType = EDigitizer::kDefault;
 	int tmpUnit = 10;
-	if(name.compare("CAEN8") == 0) {
-		tmpType = EDigitizer::kCAEN8;
-	} else if(name.compare("CAEN") == 0) {
-		tmpType = EDigitizer::kCaen;
+	if(name.compare("V1724") == 0) {
+		tmpType = EDigitizer::kV1724;
+        tmpUnit = 10;
 	} else if(name.compare("V1725") == 0) {
-        tmpType = EDigitizer::V1725;
-        tmpUnit = 4;
+        tmpType = EDigitizer::kV1725;
+        tmpUnit = 4; // ns
+    } else if(name.compare("V1730") == 0) {
+        tmpType = EDigitizer::kV1730;
+        tmpUnit = 2; // ns
+    } else if(name.compare("V1751") == 0) {
+        tmpType = EDigitizer::kV1751;
+        tmpUnit = 1; // ns
     } else {
 		std::cout<<"Warning, digitizer type '"<<name<<"' not recognized, options are 'CAEN8', 'CAEN', and 'V1725'!"<<std::endl;
 	}

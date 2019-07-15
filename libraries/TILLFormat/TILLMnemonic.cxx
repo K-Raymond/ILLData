@@ -8,6 +8,7 @@
 #include "TFippsLaBr.h"
 #include "TFippsLaBrBgo.h"
 #include "TFippsTAC.h"
+#include "TFippsPulser.h"
 
 ClassImp(TILLMnemonic)
 
@@ -35,6 +36,8 @@ void TILLMnemonic::EnumerateSystem()
        } else {
            fSystem = ESystem::kFippsLaBr;
        }
+   } else if(fSystemString.compare("PU") == 0) {
+       fSystem = ESystem::kFippsPulser;
    } else {
       fSystem = ESystem::kClear;
    }
@@ -101,6 +104,7 @@ TClass* TILLMnemonic::GetClassType() const
         case ESystem::kFippsLaBr:    fClassType = TFippsLaBr::Class(); break;
         case ESystem::kFippsLaBrBgo: fClassType = TFippsLaBrBgo::Class(); break;
         case ESystem::kFippsTAC:     fClassType = TFippsTAC::Class(); break;
+        case ESystem::kFippsPulser:  fClassType = TFippsPulser::Class(); break;
 		default:              fClassType = nullptr;
 	};
 	return fClassType;

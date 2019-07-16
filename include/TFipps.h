@@ -58,11 +58,13 @@ public:
    TFipps& operator=(const TFipps&); //!<!
 
 #if !defined(__CINT__) && !defined(__CLING__)
-   void SetAddbackCriterion(std::function<bool(TFippsHit*, TFippsHit*)> criterion)
+   void SetAddbackCriterion(std::function<bool(const TDetectorHit*, const TDetectorHit*)> criterion)
    {
       fAddbackCriterion = std::move(criterion);
    }
-   std::function<bool(TFippsHit*, TFippsHit*)> GetAddbackCriterion() const { return fAddbackCriterion; }
+   std::function<bool(const TDetectorHit*, const TDetectorHit*)> GetAddbackCriterion() const { return fAddbackCriterion; }
+
+   bool AddbackCriterion(const TDetectorHit* hit1, const TDetectorHit* hit2) override { return fAddbackCriterion(hit1, hit2); }
 #endif
 
    Int_t         GetAddbackMultiplicity();
@@ -77,13 +79,24 @@ public:
    Int_t         GetSuppressedMutliplicity( const TBgo* bgo );
    bool          IsSuppressed() const;
 
+#if !defined(__CINT__) && !defined(__CLING__)
+   void SetSuppressionCriterion(std::function<bool(const TDetectorHit*, const TDetectorHit*)> criterion)
+   {
+      fSuppressionCriterion = std::move(criterion);
+   }
+   std::function<bool(const TDetectorHit*, const TDetectorHit*)> GetSuppressionCriterion() const { return fSuppressionCriterion; }
+
+   bool SuppressionCriterion(const TDetectorHit* hit, const TDetectorHit* bgoHit) override { return fSuppressionCriterion(hit, bgoHit); }
+#endif
+
    TDetectorHit*    GetSuppressedAddbackHit( const int& i );
    Int_t            GetSuppressedAddbackMultiplicity(const TBgo* bgo);
    bool IsSuppressedAddbackSet() const;
 
 private:
 #if !defined(__CINT__) && !defined(__CLING__)
-   static std::function<bool(TFippsHit*, TFippsHit*)> fAddbackCriterion;
+   static std::function<bool(const TDetectorHit*, const TDetectorHit*)> fAddbackCriterion;
+   static std::function<bool(const TDetectorHit*, const TDetectorHit*)> fSuppressionCriterion;
 #endif
 
    // static bool fSetBGOHits;                //!<!  Flag that determines if BGOHits are being measured

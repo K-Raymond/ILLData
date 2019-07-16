@@ -15,13 +15,23 @@
 ClassImp(TFipps)
 /// \endcond
 
-bool DefaultAddback(TFippsHit* one, TFippsHit* two)
+
+bool DefaultFippsAddback(const TDetectorHit* one, const TDetectorHit* two)
 {
    return ((one->GetDetector() == two->GetDetector()) &&
            (std::fabs(one->GetTime() - two->GetTime()) < TGRSIOptions::AnalysisOptions()->AddbackWindow()));
 }
 
-std::function<bool(TFippsHit*, TFippsHit*)> TFipps::fAddbackCriterion = DefaultAddback;
+std::function<bool(const TDetectorHit*, const TDetectorHit*)> TFipps::fAddbackCriterion = DefaultFippsAddback;
+
+bool DefaultFippsSuppression(const TDetectorHit* hit, const TDetectorHit* bgoHit)
+{
+	return ((hit->GetDetector() == bgoHit->GetDetector()) &&
+	(std::fabs(hit->GetTime() - bgoHit->GetTime()) < TGRSIOptions::AnalysisOptions()->SuppressionWindow()) &&
+	(bgoHit->GetEnergy() > TGRSIOptions::AnalysisOptions()->SuppressionEnergy()));
+}
+
+std::function<bool(const TDetectorHit*, const TDetectorHit*)> TFipps::fSuppressionCriterion = DefaultFippsSuppression;
 
 // This seems unnecessary, and why 17?;//  they are static members, and need
 //  to be defined outside the header
@@ -274,9 +284,9 @@ Int_t TFipps::GetAddbackMultiplicity()
    if(!IsCrossTalkSet()) {
       FixCrossTalk();
    }
-   auto hit_vec  = GetHitVector();
-   auto ab_vec   = GetAddbackVector();
-   auto frag_vec = GetAddbackFragVector();
+   auto& hit_vec  = GetHitVector();
+   auto& ab_vec   = GetAddbackVector();
+   auto& frag_vec = GetAddbackFragVector();
    if(hit_vec.empty()) {
       return 0;
    }
@@ -302,9 +312,9 @@ Int_t TFipps::GetSuppressedAddbackMultiplicity(const TBgo* bgo)
    if(!IsCrossTalkSet()) {
       FixCrossTalk();
    }
-   auto hit_vec  = GetSuppressedVector();
-   auto ab_vec   = GetSuppressedAddbackVector();
-   auto frag_vec = GetSuppressedAddbackFragVector();
+   auto& hit_vec  = GetSuppressedVector();
+   auto& ab_vec   = GetSuppressedAddbackVector();
+   auto& frag_vec = GetSuppressedAddbackFragVector();
    if(hit_vec.empty()) {
       return 0;
    }

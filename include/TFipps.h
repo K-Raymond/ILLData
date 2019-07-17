@@ -76,7 +76,7 @@ public:
    UShort_t      GetNAddbackFrags(const size_t& idx);
 
    TDetectorHit*    GetSuppressedHit(const int& i);
-   Int_t         GetSuppressedMutliplicity( const TBgo* bgo );
+   Int_t         GetSuppressedMultiplicity( const TBgo* bgo );
    bool          IsSuppressed() const;
 
 #if !defined(__CINT__) && !defined(__CLING__)

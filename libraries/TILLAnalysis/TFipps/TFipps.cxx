@@ -275,7 +275,7 @@ TDetectorHit* TFipps::GetSuppressedHit(const int& i)
    return nullptr;
 }
 
-Int_t TFipps::GetSuppressedMutliplicity(const TBgo* bgo)
+Int_t TFipps::GetSuppressedMultiplicity(const TBgo* bgo)
 {
 	/// Automatically builds the suppressed hits using the fSuppressionCriterion and returns the number of suppressed hits
    if(!IsCrossTalkSet()) {

@@ -274,6 +274,30 @@ TDetectorHit* TFipps::GetSuppressedHit(const int& i)
    }
    return nullptr;
 }
+
+Int_t TFipps::GetSuppressedMutliplicity(const TBgo* bgo)
+{
+	/// Automatically builds the suppressed hits using the fSuppressionCriterion and returns the number of suppressed hits
+   if(!IsCrossTalkSet()) {
+      // Calculate Cross Talk on each hit
+      FixCrossTalk();
+   }
+   auto& hit_vec  = GetHitVector();
+   auto& sup_vec  = GetSuppressedVector();
+	if(hit_vec.empty()) {
+		return 0;
+	}
+   // if the suppressed has been reset, clear the suppressed hits
+   if(!IsSuppressed()) {
+      sup_vec.clear();
+   }
+   if(sup_vec.empty()) {
+		CreateSuppressed(bgo, hit_vec, sup_vec);
+      SetSuppressed(true);
+   }
+
+   return sup_vec.size();
+}
     
 
 Int_t TFipps::GetAddbackMultiplicity()
